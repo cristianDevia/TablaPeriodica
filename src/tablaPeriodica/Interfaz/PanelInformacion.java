@@ -41,7 +41,7 @@ public class PanelInformacion extends JPanel
 		TitledBorder borde1 = BorderFactory.createTitledBorder("Visualizacion de los elementos");
 		borde1.setTitleColor( Color.BLACK );
 		setBorder( borde1 );
-
+		
 		txtResultado = new JTextArea();
 		txtResultado.setBackground(Color.WHITE);
 		txtResultado.setEditable(false);
