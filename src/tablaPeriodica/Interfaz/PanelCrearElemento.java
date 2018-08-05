@@ -29,12 +29,12 @@ public class PanelCrearElemento extends JPanel implements ActionListener
     /**
      * El comando para el botón Crear
      */
-    private static final String CREAR_ELEMENTO = "Crear Elemento";
+    public static final String CREAR_ELEMENTO = "Crear Elemento";
 
     /**
      * El comando para el botón Cancelar
      */
-    private static final String CANCELAR = "Cancelar";
+    public static final String CANCELAR = "Cancelar";
 
     // -----------------------------------------------------------------
     // Atributos
