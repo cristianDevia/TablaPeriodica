@@ -1,5 +1,7 @@
 package tablaPeriodica.Interfaz;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,6 +9,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 
 
 public class PanelCrearElemento extends JPanel implements ActionListener
@@ -75,7 +80,34 @@ public class PanelCrearElemento extends JPanel implements ActionListener
     {
     	dialogo = dialog;
     	
+    	setLayout(new BorderLayout());
+    	setBorder(new TitledBorder("Crear Elemento"));
     	
+    	labNumAt = new JLabel("Numero Atomico: ");
+    	
+    	txtNumAt = new JTextField();
+        txtNumAt.setPreferredSize( new Dimension( 80, 25 ) );
+
+    	
+    	labNombre = new JLabel("Nombre: ");
+    	
+    	txtNombre = new JTextField();
+        txtNombre.setPreferredSize( new Dimension( 80, 25 ) );
+
+    	labSimbolo = new JLabel("Simbolo ");
+    	
+    	txtSimbolo = new JTextField();
+        txtSimbolo.setPreferredSize( new Dimension( 80, 25 ) );
+
+    	
+    	add(labNumAt);
+    	add(txtNumAt);
+
+    	add(labNombre);
+    	add(txtNombre);
+
+    	add(labSimbolo);
+    	add(txtSimbolo);
     }
 
 
@@ -128,12 +160,11 @@ public class PanelCrearElemento extends JPanel implements ActionListener
 		this.txtSimbolo = txtSimbolo;
 	}
 
-
-	
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+    /**
+     * Ejecuta una acción cuando se hace click sobre un botón
+     * @param evento el evento del click sobre un botón - evento!=null
+     */
+	public void actionPerformed(ActionEvent evento) {
 		
 	}
 
