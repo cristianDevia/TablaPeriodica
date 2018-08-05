@@ -1,11 +1,15 @@
 package tablaPeriodica.Interfaz;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -75,6 +79,15 @@ public class PanelCrearElemento extends JPanel implements ActionListener
      */
     private JTextField txtSimbolo;
 	
+    /**
+     * Es el boton de crear
+     */
+    private JButton butCrear;
+    
+    /**
+     * Es el boton de cancelar
+     */
+    private JButton butCancelar;
 	
     public PanelCrearElemento(DialogoAgregarElemento dialog)
     {
@@ -83,31 +96,57 @@ public class PanelCrearElemento extends JPanel implements ActionListener
     	setLayout(new BorderLayout());
     	setBorder(new TitledBorder("Crear Elemento"));
     	
+    	JPanel panelD = new JPanel();
+    	panelD.setLayout(new GridLayout(3, 3));
+
+		//Establece las dimensiones del panel
+    	panelD.setPreferredSize(new Dimension(0, 90));
+
+    	
     	labNumAt = new JLabel("Numero Atomico: ");
     	
     	txtNumAt = new JTextField();
-        txtNumAt.setPreferredSize( new Dimension( 80, 25 ) );
-
     	
     	labNombre = new JLabel("Nombre: ");
     	
     	txtNombre = new JTextField();
-        txtNombre.setPreferredSize( new Dimension( 80, 25 ) );
 
     	labSimbolo = new JLabel("Simbolo ");
     	
     	txtSimbolo = new JTextField();
-        txtSimbolo.setPreferredSize( new Dimension( 80, 25 ) );
 
     	
-    	add(labNumAt);
-    	add(txtNumAt);
+    	panelD.add(labNumAt);
+    	panelD.add(txtNumAt);
 
-    	add(labNombre);
-    	add(txtNombre);
+    	panelD.add(labNombre);
+    	panelD.add(txtNombre);
 
-    	add(labSimbolo);
-    	add(txtSimbolo);
+    	panelD.add(labSimbolo);
+    	panelD.add(txtSimbolo);
+    	add(panelD, BorderLayout.CENTER);
+    	
+		//Adiciona un marco con titulo
+    	JPanel panelN = new JPanel();
+    	TitledBorder borde = BorderFactory.createTitledBorder("Opciones");
+    	borde.setTitleColor(Color.BLUE);
+    	
+		//Establece las dimensiones del panel
+    	panelN.setPreferredSize(new Dimension(0, 90));
+    	
+    	butCrear = new JButton("Crear elemento");
+		butCrear.setActionCommand(CREAR_ELEMENTO);
+		butCrear.addActionListener(this);
+    	
+		butCancelar = new JButton("Cancelar");
+		butCancelar.setActionCommand(CANCELAR);
+		butCancelar.addActionListener(this);
+		
+		panelN.add(butCrear);
+		panelN.add(butCancelar);
+		
+		add(panelN, BorderLayout.SOUTH);
+    	
     }
 
     /**
@@ -149,7 +188,7 @@ public class PanelCrearElemento extends JPanel implements ActionListener
 
         if( CREAR_ELEMENTO.equals( comando ) )
         {
-            
+            dialogo.crearElemento();
         }
         else if( CANCELAR.equals( comando ) )
         {

@@ -106,9 +106,9 @@ public class DialogoAgregarElemento extends JDialog
      */
     public void crearElemento( )
     {
-        boolean parametersOk = true;
-        String nombre = null;
+        boolean datosOk = true;
         int numAtom = 0;
+        String nombre = null;
         String simbolo = null;
         String categoria = null;
       
@@ -118,21 +118,31 @@ public class DialogoAgregarElemento extends JDialog
         
         if(numAtom < 0 && numAtom > 118)
         {
-        	
+        	datosOk = false;
+            JOptionPane.showMessageDialog( this, "El numero atomico ingresado no es un valor válido", "error", JOptionPane.ERROR_MESSAGE );
+        
         }
         else 
         {
         	if(nombre.equals(""))
         	{
-        		parametersOk = false;
+        		datosOk = false;
                 JOptionPane.showMessageDialog( this, "Debe ingresar el nombre del elemento", "error", JOptionPane.ERROR_MESSAGE );
             
         	}
-        }
-        
+        	else
+        	{
+        		if(simbolo.equals(""))
+        		{
+        			datosOk = false;
+                    JOptionPane.showMessageDialog( this, "Debe ingresar el simbolo del elemento", "error", JOptionPane.ERROR_MESSAGE );
        
-    	
-    	if(numAtom == 1 || numAtom == 6 || numAtom == 7 || numAtom == 8 || numAtom == 15 || numAtom == 16 || numAtom == 34)
+        		}
+        		       			
+        	}
+        }
+       
+		if(numAtom == 1 || numAtom == 6 || numAtom == 7 || numAtom == 8 || numAtom == 15 || numAtom == 16 || numAtom == 34)
 		{
 			categoria = NO_MET;
 		}
@@ -172,16 +182,18 @@ public class DialogoAgregarElemento extends JDialog
 		{
 			categoria = ACTINIDOS;
 		}
+		
         
-        
-        if( parametersOk )
+        if( datosOk )
         {
             boolean ok = principal.crearElemento(numAtom, simbolo, nombre, categoria);
 
             if( ok )
+            {
                 dispose( );
+            }
         }
+    	
     }
-	
 
 }
