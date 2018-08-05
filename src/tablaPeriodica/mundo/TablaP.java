@@ -188,7 +188,7 @@ public class TablaP
 	}
 	
     /**
-     * Salva la tabla periodica en un archivo binario en un archivo binario
+     * Salva la tabla periodica en un archivo binario
      * @throws PersistenciaException Se lanza esta excepción si hay problemas guardando la información de los elementos en el archivo
      */
     public void salvar( ) throws PersistenciaException

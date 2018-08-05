@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.Toolkit;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -67,7 +68,13 @@ public class InterfazTablaPeriodica extends JFrame
        
         add( panelBotones, BorderLayout.SOUTH);
         centrar( );
-
+        
+        try {
+			tabla.cargarElementos();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	
     }
     
