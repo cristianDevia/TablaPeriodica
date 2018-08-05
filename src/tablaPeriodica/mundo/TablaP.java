@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-public class ServicioTabla 
+public class TablaP 
 {
 	
     /**
@@ -43,7 +43,7 @@ public class ServicioTabla
 	/**
 	 * Constructor
 	 */
-	public ServicioTabla(String nombreArchivoElemento) throws PersistenciaException
+	public TablaP(String nombreArchivoElemento) throws PersistenciaException
 	{
 		archivoElementos = nombreArchivoElemento;
 		File archivo = new File(archivoElementos);
