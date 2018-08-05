@@ -15,17 +15,6 @@ import tablaPeriodica.mundo.TablaP;
 
 public class InterfazTablaPeriodica extends JFrame
 {
-    // -----------------------------------------------------------------
-    // Constantes
-    // -----------------------------------------------------------------
-
-    /**
-     * La ruta donde deben guardarse los reportes
-     */
-    private static final String RUTA_ELEMENTOS = "./data/elementos";
-    
-
-
 
     // -----------------------------------------------------------------
     // Atributos

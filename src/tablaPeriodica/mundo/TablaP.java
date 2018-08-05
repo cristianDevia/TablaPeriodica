@@ -11,9 +11,6 @@ public class TablaP
     * Nombre del archivo de registro de errores del programa
     */
     private static final String LOG_FILE = "./data/error.log";
-	
-    public static final String RUTA ="./data/elementos.txt";
-    
 
 	private ArrayList<Elemento> elementos;
 	
