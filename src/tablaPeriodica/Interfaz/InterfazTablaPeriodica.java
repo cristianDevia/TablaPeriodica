@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 import tablaPeriodica.mundo.Elemento;
 import tablaPeriodica.mundo.ElementoExisteException;
@@ -32,14 +33,22 @@ public class InterfazTablaPeriodica extends JFrame
     // -----------------------------------------------------------------
 
     /**
+     * Panel con la imagen del titulo
+     */
+    private PanelBanner panelBanner;
+    
+    /**
+     * Panel con la informacion de la tabla periodica
+     */
+    private PanelInformacion panelInfo;
+    
+    
+    /**
      * Panel con los botones
      */
     private PanelBotones panelBotones;
     
-    /**
-     * Panel con la imagen del titulo
-     */
-    private PanelBanner panelBanner;
+   
     
     // -----------------------------------------------------------------
     // Constructores
@@ -64,6 +73,9 @@ public class InterfazTablaPeriodica extends JFrame
       
         add( panelBanner, BorderLayout.NORTH);
     	
+        
+        panelInfo = new PanelInformacion(this);
+        add(panelInfo, BorderLayout.CENTER);
     	
         panelBotones = new PanelBotones( this );
        
@@ -131,6 +143,12 @@ public class InterfazTablaPeriodica extends JFrame
     		String cast3 = aux.getCategoria();
     		
     		String visual = cast + " " + cast1 + " " + cast2 + " " + cast3;
+    		
+    		if(cast != null && cast == "" && cast1 != null && cast1 == "" && cast2 != null && cast2 == "" && cast3 != null && cast3 == "")
+    		{
+    			JTextArea resultado = panelInfo.getTxtResultado();
+    			resultado.insert(visual, 0);
+    		}
     	}
     }
     
