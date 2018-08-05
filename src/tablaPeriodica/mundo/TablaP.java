@@ -11,7 +11,9 @@ public class TablaP
     * Nombre del archivo de registro de errores del programa
     */
     private static final String LOG_FILE = "./data/error.log";
-
+    
+    private static final String RUTA = "./data/elementos.log";
+  
 	private ArrayList<Elemento> elementos;
 	
 	private String archivoElementos;
@@ -82,7 +84,7 @@ public class TablaP
 	}
 	
 		
-	public void agregar(int numAtom, String simbol, String nombre, String categoria) throws ElementoExisteException
+	public void agregar(int numAtom, String simbol, String nombre, String categoria) throws ElementoExisteException, PersistenciaException
 	{
 		String n = Integer.toString(numAtom);
 		if(verificarElemento(n)!= null)
@@ -92,6 +94,29 @@ public class TablaP
 	
 		Elemento nuevo = new Elemento(numAtom, simbol, nombre, categoria);
 		elementos.add(nuevo);
+		guardar();
+	}
+	
+	
+	public void guardar() throws PersistenciaException
+	{
+		try 
+		{
+			FileWriter file = new FileWriter(RUTA,false);
+			PrintWriter writer = new PrintWriter(file);
+			for(int i = 0; i < elementos.size(); i++)
+			{
+				Elemento e = elementos.get(i);
+				String out = e.getNumAtomico() +	 "/"	+	e.getSimbolo() +	"/"	+	e.getNombre();
+				writer.println(out);
+			}
+			writer.close();
+			file.close();
+		}
+		catch (IOException e)
+		{
+			throw new PersistenciaException("Existe un problema en el archivo");
+		}
 	}
 
 	public void eliminar(String numAtom) throws ElementoNoExisteException

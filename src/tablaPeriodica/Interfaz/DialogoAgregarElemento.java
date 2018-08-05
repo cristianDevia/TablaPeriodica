@@ -7,6 +7,8 @@ import java.awt.Toolkit;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import tablaPeriodica.mundo.PersistenciaException;
+
 public class DialogoAgregarElemento extends JDialog
 {
 	
@@ -103,8 +105,9 @@ public class DialogoAgregarElemento extends JDialog
     
     /**
      * Adiciona el elemento a la tabla periodica
+     * @throws PersistenciaException 
      */
-    public void crearElemento( )
+    public void crearElemento( ) throws PersistenciaException
     {
         boolean datosOk = true;
         int numAtom = 0;

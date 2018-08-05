@@ -96,7 +96,7 @@ public class InterfazTablaPeriodica extends JFrame
     	dialogo.setVisible(true);
     }
     
-    public boolean crearElemento(int numAtom, String simbolo, String nombre, String categoria)
+    public boolean crearElemento(int numAtom, String simbolo, String nombre, String categoria) throws PersistenciaException
     {
         boolean ok = false;
 		try {

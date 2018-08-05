@@ -17,6 +17,8 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+import tablaPeriodica.mundo.PersistenciaException;
+
 
 public class PanelCrearElemento extends JPanel implements ActionListener
 {
@@ -188,7 +190,12 @@ public class PanelCrearElemento extends JPanel implements ActionListener
 
         if( CREAR_ELEMENTO.equals( comando ) )
         {
-            dialogo.crearElemento();
+            try {
+				dialogo.crearElemento();
+			} catch (PersistenciaException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }
         else if( CANCELAR.equals( comando ) )
         {
