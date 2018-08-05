@@ -42,12 +42,19 @@ public class PanelInformacion extends JPanel
 		borde1.setTitleColor( Color.BLACK );
 		setBorder( borde1 );
 		
+		//Panel de resultados
+		JPanel panelResultados = new JPanel();
+		panelResultados.setLayout(new BorderLayout());
+		panelResultados.setPreferredSize(new Dimension(560, 240));
+
 		txtResultado = new JTextArea();
 		txtResultado.setBackground(Color.WHITE);
 		txtResultado.setEditable(false);
 		scroll = new JScrollPane(txtResultado);
-				
-		add(scroll,BorderLayout.CENTER);
+		
+		panelResultados.add(scroll,BorderLayout.CENTER);
+		
+		add(panelResultados);
 	}
 
 
