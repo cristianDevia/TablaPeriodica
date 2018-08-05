@@ -25,12 +25,26 @@ public class PanelBanner extends JPanel
 		
 	public PanelBanner( )
 	{
-		// Se crea el objeto del panel
-		labImagen = new JLabel(new ImageIcon(getClass().getResource("data/titulo.png")  ) );
-			
-		// Agregar el objeto al panel
-		add( labImagen );
+		FlowLayout layout = new FlowLayout( );
+        layout.setHgap( 0 );
+        layout.setVgap( 0 );
+        setLayout( layout );
+        //
+        // Carga la imagen
+        ImageIcon icono = new ImageIcon( "data/imagenes/titulo.png" );
+
+        // La agrega a la etiqueta
+        labImagen = new JLabel( "" );
+        labImagen.setIcon( icono );
+        add( labImagen );
+        //
+        // Color de fondo blanco
+        setBackground( Color.WHITE );
+        setBorder( new LineBorder( Color.GRAY ) );
 	}
+	
+	
+	
 	
 	
 }
