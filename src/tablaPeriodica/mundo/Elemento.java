@@ -2,7 +2,9 @@ package tablaPeriodica.mundo;
 
 public class Elemento 
 {
-
+	/**
+	 *Atributo que representa el numero Atomico de un elemento
+	 */
 	private int numAtomico;
 	
 	private String simbolo;
