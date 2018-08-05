@@ -85,16 +85,15 @@ public class TablaP
 	}
 	
 		
-	public void agregar(String numAt, String simbol, String nombre, String categoria) throws ElementoExisteException
+	public void agregar(int numAtom, String simbol, String nombre, String categoria) throws ElementoExisteException
 	{
-		if(verificarElemento(numAt)!= null)
+		String n = Integer.toString(numAtom);
+		if(verificarElemento(n)!= null)
 		{
-			throw new ElementoExisteException("El elemento con numero atomico" + numAt + " ya existe");
+			throw new ElementoExisteException("El elemento con numero atomico" + numAtom + " ya existe");
 		}
 	
-		int n = Integer.parseInt(numAt);
-		
-		Elemento nuevo = new Elemento(n, simbol, nombre, categoria);
+		Elemento nuevo = new Elemento(numAtom, simbol, nombre, categoria);
 		elementos.add(nuevo);
 	}
 

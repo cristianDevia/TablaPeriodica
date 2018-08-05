@@ -110,61 +110,51 @@ public class PanelCrearElemento extends JPanel implements ActionListener
     	add(txtSimbolo);
     }
 
+    /**
+     * Da el valor del campo de texto con el nombre del elemento
+     * @return Se retornó el nombre del elemento ingresado por el usuario
+     */
+    public String darNombre( )
+    {
+        return txtNombre.getText( );
+    }
 
 
-	public JLabel getLabNumAt() {
-		return labNumAt;
-	}
+    /**
+     * Da el valor del campo de texto con el numero atomico del elemento
+     * @return Se retornó el numero atomico ingresado por el usuario
+     */
+    public String darNumeroAtomico( )
+    {
+        return txtNumAt.getText( );
+    }
+    
 
-	public void setLabNumAt(JLabel labNumAt) {
-		this.labNumAt = labNumAt;
-	}
-
-	public JTextField getTxtNumAt() {
-		return txtNumAt;
-	}
-
-	public void setTxtNumAt(JTextField txtNumAt) {
-		this.txtNumAt = txtNumAt;
-	}
-
-	public JLabel getLabNombre() {
-		return labNombre;
-	}
-
-	public void setLabNombre(JLabel labNombre) {
-		this.labNombre = labNombre;
-	}
-
-	public JTextField getTxtNombre() {
-		return txtNombre;
-	}
-
-	public void setTxtNombre(JTextField txtNombre) {
-		this.txtNombre = txtNombre;
-	}
-
-	public JLabel getLabSimbolo() {
-		return labSimbolo;
-	}
-
-	public void setLabSimbolo(JLabel labSimbolo) {
-		this.labSimbolo = labSimbolo;
-	}
-
-	public JTextField getTxtSimbolo() {
-		return txtSimbolo;
-	}
-
-	public void setTxtSimbolo(JTextField txtSimbolo) {
-		this.txtSimbolo = txtSimbolo;
-	}
-
+    /**
+     * Da el valor del campo de texto con el simbolo del elemento
+     * @return Se retornó el simbolo del elemento ingresado por el usuario
+     */
+    public String darSimbolo( )
+    {
+        return txtSimbolo.getText( );
+    }
+	
     /**
      * Ejecuta una acción cuando se hace click sobre un botón
      * @param evento el evento del click sobre un botón - evento!=null
      */
-	public void actionPerformed(ActionEvent evento) {
+	public void actionPerformed(ActionEvent evento) 
+	{
+        String comando = evento.getActionCommand( );
+
+        if( CREAR_ELEMENTO.equals( comando ) )
+        {
+            
+        }
+        else if( CANCELAR.equals( comando ) )
+        {
+            dialogo.dispose( );
+        }
 		
 	}
 
