@@ -88,6 +88,8 @@ public class InterfazTablaPeriodica extends JFrame
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+        
+        visualizar();
     	
     }
     
