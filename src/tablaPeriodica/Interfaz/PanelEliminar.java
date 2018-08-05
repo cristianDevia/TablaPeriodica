@@ -26,7 +26,7 @@ public class PanelEliminar extends JPanel implements ActionListener
 	 /**
 	 * Es una referencia a la clase principal de la interfaz
 	 */
-	 private InterfazTablaPeriodica principal;
+	 private DialogoEliminar principal;
 	    
 	 /**
 	 * Es el botón para eliminar un elemento
@@ -48,10 +48,10 @@ public class PanelEliminar extends JPanel implements ActionListener
 
 	    private Elemento elemento;
 	    
-	    public PanelEliminar( InterfazTablaPeriodica ventana, ArrayList elementos )
+	    public PanelEliminar(ArrayList elementos, DialogoEliminar dialogoEliminar )
 	    {
-	    	 principal = ventana;
-	         setBorder( new CompoundBorder( new EmptyBorder( 5, 5, 5, 5 ), new TitledBorder( "Opciones" ) ) );
+	    	 principal = dialogoEliminar;
+	         setBorder( new CompoundBorder( new EmptyBorder( 5, 5, 5, 5 ), new TitledBorder( "Eliminar" ) ) );
 	         setLayout( new GridLayout( 2, 3) );
 
 	         labNombre = new JLabel("Elemento:");
@@ -76,11 +76,12 @@ public class PanelEliminar extends JPanel implements ActionListener
 	         add( butCancelar );
 	    }
 	    
-	    /**
+
+		/**
 	     * 
 	     * 
 	     */
-	    public void cargarEquipos( ArrayList elementos )
+	    public void cargarElementos( ArrayList elementos )
 	    {
 	        jcbElementos.removeAllItems( );
 

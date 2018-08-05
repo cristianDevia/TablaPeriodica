@@ -116,6 +116,12 @@ public class InterfazTablaPeriodica extends JFrame
     	dialogo.setVisible(true);
     }
     
+    public void mostrarDialogoEliminarElemento()
+    {
+    	DialogoEliminar dialogo = new DialogoEliminar(this);
+    	dialogo.setVisible(true);
+    }
+    
     public boolean crearElemento(int numAtom, String simbolo, String nombre, String categoria) throws PersistenciaException
     {
         boolean ok = false;
