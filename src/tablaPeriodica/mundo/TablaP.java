@@ -107,7 +107,7 @@ public class TablaP
 			for(int i = 0; i < elementos.size(); i++)
 			{
 				Elemento e = elementos.get(i);
-				String out = e.getNumAtomico() +	 "/"	+	e.getSimbolo() +	"/"	+	e.getNombre();
+				String out = e.getNumAtomico() +	 "-"	+	e.getSimbolo() +	"-"	+	e.getNombre() +	"-"	+	e.getCategoria();
 				writer.println(out);
 			}
 			writer.close();
@@ -162,11 +162,36 @@ public class TablaP
 		
 	}
 	
+	public void cargarElementos() throws IOException
+	{
+			File archivo = new File( RUTA );
+			FileReader reader = new FileReader(archivo );
+			BufferedReader lector = new BufferedReader( reader );
+			String linea = lector.readLine();
+			
+			while(linea != null)
+			{
+				String[] partesElemento = linea.split("-");
+				
+				int numAtomico = Integer.parseInt(partesElemento[0]);
+				String simbolo = partesElemento[1];
+				String nombre = partesElemento[2];
+				String categoria = partesElemento[3];
+				
+				Elemento e = new Elemento(numAtomico,simbolo,nombre, categoria);
+				
+				elementos.add(e);
+				linea = lector.readLine();
+			}
+		lector.close();
+		reader.close();
+	}
+	
     /**
      * Salva la tabla periodica en un archivo binario en un archivo binario
      * @throws PersistenciaException Se lanza esta excepción si hay problemas guardando la información de los elementos en el archivo
      */
-    public void salvarMundial( ) throws PersistenciaException
+    public void salvar( ) throws PersistenciaException
     {
         try
         {

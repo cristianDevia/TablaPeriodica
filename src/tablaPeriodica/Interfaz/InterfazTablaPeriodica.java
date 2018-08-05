@@ -118,7 +118,7 @@ public class InterfazTablaPeriodica extends JFrame
     {
         try
         {
-            tabla.salvarMundial( );
+            tabla.salvar( );
             super.dispose( );
         }
         catch( Exception e )
