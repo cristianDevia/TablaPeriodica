@@ -16,6 +16,18 @@ public class TablaP
   
 	private ArrayList<Elemento> elementos;
 	
+	public String getArchivoElementos() {
+		return archivoElementos;
+	}
+
+	public void setArchivoElementos(String archivoElementos) {
+		this.archivoElementos = archivoElementos;
+	}
+
+	public void setElementos(ArrayList<Elemento> elementos) {
+		this.elementos = elementos;
+	}
+
 	private String archivoElementos;
 	
 	
