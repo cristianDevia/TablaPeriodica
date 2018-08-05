@@ -43,7 +43,7 @@ public class DialogoAgregarElemento extends JDialog
 		principal = ventana;
 		
 		setTitle( "Crear Elemento" );
-        setSize( 500, 700 );
+        setSize( 400, 400 );
         setResizable( false );
         setLocationRelativeTo(null);
         setModal(true);

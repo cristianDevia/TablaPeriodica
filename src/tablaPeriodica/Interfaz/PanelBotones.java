@@ -123,6 +123,11 @@ public class PanelBotones extends JPanel implements ActionListener
 	public void actionPerformed(ActionEvent evento) 
 	{
         String comando = evento.getActionCommand( );
+        
+        if(comando.equals(AGREGAR_ELEMENTO))
+        {
+        	principal.mostrarDialogoAgregarElemento();
+        }
 
 		
 		
