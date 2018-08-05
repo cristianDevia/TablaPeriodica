@@ -1,8 +1,10 @@
 package tablaPeriodica.Interfaz;
 
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -35,8 +37,21 @@ public class PanelEliminar extends JPanel implements ActionListener
 	    private JButton butCancelar;
 	    
 		
-	    private JComboBox elemento;
+	    private JComboBox jcbElementos;
 	    
+	    /**
+	     * 
+	     * 
+	     */
+	    public void cargarEquipos( ArrayList elementos )
+	    {
+	        jcbElementos.removeAllItems( );
+
+	        for( int i = 0; i < elementos.size( ); i++ )
+	        {
+	            jcbElementos.addItem( elementos.get( i ) );
+	        }
+	    }
 	    
 	    /**
 	     * Es la etiqueta "Nombre: "
@@ -50,6 +65,14 @@ public class PanelEliminar extends JPanel implements ActionListener
 	         setBorder( new CompoundBorder( new EmptyBorder( 5, 5, 5, 5 ), new TitledBorder( "Opciones" ) ) );
 	         setLayout( new GridLayout( 2, 3) );
 
+	         labNombre = new JLabel("Elemento:");
+	         
+	         JPanel panelAuxiliar = new JPanel( );
+	         panelAuxiliar.setLayout( new GridBagLayout( ) );
+	         jcbElementos = new JComboBox( elementos.toArray( ) );
+	         jcbElementos.setEditable( false );
+	         jcbElementos.addActionListener( this );
+	         jcbElementos.setActionCommand( CAMBIAR_EQUIPO );
 	         
 	         
 	         // Botón agregar elementos
