@@ -49,6 +49,10 @@ public class TablaP
 		
 	}	
 
+	public ArrayList<Elemento> getElementos() {
+		return elementos;
+	}
+
 	public Elemento consultar(int numAtomico)
 	{
 		Elemento buscado = null;

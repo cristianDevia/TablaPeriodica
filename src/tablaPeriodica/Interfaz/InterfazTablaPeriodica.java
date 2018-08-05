@@ -9,6 +9,7 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import tablaPeriodica.mundo.Elemento;
 import tablaPeriodica.mundo.ElementoExisteException;
 import tablaPeriodica.mundo.PersistenciaException;
 import tablaPeriodica.mundo.TablaP;
@@ -117,26 +118,20 @@ public class InterfazTablaPeriodica extends JFrame
 
     }
     
+
     
-    /**
-     * Este método se encarga de salvar la información del mundial, justo antes de cerrar la aplicación
-     */
-    public void dispose( )
+    public void visualizar()
     {
-        try
-        {
-            tabla.salvar( );
-            super.dispose( );
-        }
-        catch( Exception e )
-        {
-            setVisible( true );
-            int respuesta = JOptionPane.showConfirmDialog( this, "Problemas salvando la información de la tabla periodica:\n" + e.getMessage( ) + "\n¿Quiere cerrar el programa sin salvar?", "Error", JOptionPane.YES_NO_OPTION );
-            if( respuesta == JOptionPane.YES_OPTION )
-            {
-                super.dispose( );
-            }
-        }
+    	for(int i =0; i < tabla.getElementos().size(); i++)
+    	{
+    		Elemento aux = tabla.getElementos().get(i);
+    		String cast = Integer.toString(aux.getNumAtomico());
+    		String cast1 = aux.getNombre();
+    		String cast2 = aux.getSimbolo();
+    		String cast3 = aux.getCategoria();
+    		
+    		String visual = cast + " " + cast1 + " " + cast2 + " " + cast3;
+    	}
     }
     
     
