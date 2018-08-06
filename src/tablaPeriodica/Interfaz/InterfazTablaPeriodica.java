@@ -117,13 +117,7 @@ public class InterfazTablaPeriodica extends JFrame
     	DialogoAgregarElemento dialogo = new DialogoAgregarElemento(this);
     	dialogo.setVisible(true);
     }
-    
-    public void mostrarDialogoEliminarElemento()
-    {
-    	DialogoEliminar dialogo = new DialogoEliminar(this);
-    	dialogo.setVisible(true);
-    }
-    
+         
     public boolean crearElemento(int numAtom, String simbolo, String nombre, String categoria) throws PersistenciaException
     {
         boolean ok = false;
@@ -148,13 +142,32 @@ public class InterfazTablaPeriodica extends JFrame
    		Elemento elemento;
 		try {
 			elemento = tabla.consultar(Integer.parseInt(numero));
+			if(elemento == null )
+			{
+				JOptionPane.showMessageDialog(this, "La operacion Consultar ha sido cancelada");
+			}
 			JOptionPane.showMessageDialog(this, "Numero Atomico: "+ elemento.getNumAtomico() + "\n" + "Nombre: " + elemento.getNombre() + "\n" + "Simbolo: " + elemento.getSimbolo() + "\n" + "Categoria: " + elemento.getCategoria());
 
 		} catch (NumberFormatException | ElementoNoExisteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+    }
+    
+    public void eliminar() 
+    {
+    	String numero = JOptionPane.showInputDialog("¿Digita el numero atomico del elemento que desea eliminar? ");
+    	
+			try {
+				tabla.eliminar(numero);
+				JOptionPane.showMessageDialog(this, "El elemento ha sido eliminado");
+
+			} catch (ElementoNoExisteException | PersistenciaException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	
+    	
     }
 
     

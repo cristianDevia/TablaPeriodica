@@ -121,7 +121,7 @@ public class TablaP
 		
 	}
 	
-	public void eliminar(String numAtom) throws ElementoNoExisteException
+	public void eliminar(String numAtom) throws ElementoNoExisteException, PersistenciaException
 	{	
 		if(verificarElemento(numAtom)== null)
 		{
@@ -137,6 +137,7 @@ public class TablaP
 			if(elemento.getNumAtomico() == n)
 			{
 				elementos.remove(i);
+				guardar();
 			}
 		
 		}	

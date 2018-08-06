@@ -132,7 +132,7 @@ public class PanelBotones extends JPanel implements ActionListener
 
 		if(comando.equals(ELIMINAR_ELEMENTO))
 		{
-			principal.mostrarDialogoEliminarElemento();
+			principal.eliminar();
 		}
 		if(comando.equals(CONSULTAR_ELEMENTO))
 		{
