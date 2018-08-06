@@ -25,12 +25,14 @@ public class DialogoEliminar extends JDialog
      * Construye el diálogo
      * @param ventana Es una referencia a la clase principal de la interfaz - ventana!=null
      */
+    
+    
 	public DialogoEliminar(InterfazTablaPeriodica ventana)
 	{
 		principal = ventana;
 		
 		setTitle( "Eliminar" );
-        setSize( 400, 400 );
+        setSize( 300, 300 );
         setResizable( false );
         setLocationRelativeTo(null);
         setModal(true);
@@ -38,7 +40,7 @@ public class DialogoEliminar extends JDialog
         // Distribuidor grafico en los bordes
         setLayout( new BorderLayout( ) );        
         
-		panelEliminar = new PanelEliminar(null, this);
+		panelEliminar = new PanelEliminar(this);
 		add(panelEliminar, BorderLayout.CENTER);
 		
 	}

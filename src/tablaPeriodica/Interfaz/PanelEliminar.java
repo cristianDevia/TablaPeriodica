@@ -1,5 +1,6 @@
 package tablaPeriodica.Interfaz;
 
+import java.awt.Color;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -10,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
@@ -39,7 +41,7 @@ public class PanelEliminar extends JPanel implements ActionListener
 	    private JButton butCancelar;
 	    
 		
-	    private JComboBox jcbElementos;
+	    private JTextField txtNumeroelemento;
    
 	    /**
 	     * Es la etiqueta "Nombre: "
@@ -48,20 +50,18 @@ public class PanelEliminar extends JPanel implements ActionListener
 
 	    private Elemento elemento;
 	    
-	    public PanelEliminar(ArrayList elementos, DialogoEliminar dialogoEliminar )
+	    public PanelEliminar( DialogoEliminar dialogoEliminar )
 	    {
 	    	 principal = dialogoEliminar;
-	         setBorder( new CompoundBorder( new EmptyBorder( 5, 5, 5, 5 ), new TitledBorder( "Eliminar" ) ) );
-	         setLayout( new GridLayout( 2, 3) );
+	     
+	         setLayout( new GridLayout( 1, 2) );
+	         
 
 	         labNombre = new JLabel("Elemento:");
 	         
-	         JPanel panelAuxiliar = new JPanel( );
-	         panelAuxiliar.setLayout( new GridBagLayout( ) );
-	         jcbElementos = new JComboBox( elementos.toArray() );
-	         jcbElementos.setEditable( false );
-	         jcbElementos.addActionListener( this );
-	         
+	         txtNumeroelemento = new JTextField();
+	         txtNumeroelemento.setEditable(true);
+	         txtNumeroelemento.setBackground(Color.WHITE);
 	         
 	         // Botón agregar elementos
 	         butEliminar = new JButton( "Eliminar elemento" );
@@ -76,20 +76,6 @@ public class PanelEliminar extends JPanel implements ActionListener
 	         add( butCancelar );
 	    }
 	    
-
-		/**
-	     * 
-	     * 
-	     */
-	    public void cargarElementos( ArrayList elementos )
-	    {
-	        jcbElementos.removeAllItems( );
-
-	        for( int i = 0; i < elementos.size( ); i++ )
-	        {
-	            jcbElementos.addItem( elementos.get( i ) );
-	        }
-	    }
 	    
 
 		@Override
