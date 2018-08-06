@@ -12,27 +12,29 @@ public class TablaP
     */
     private static final String LOG_FILE = "./data/error.log";
     
+    /**
+     * Nombre del archivo de registro de los elementos
+     */
     private static final String RUTA = "./data/elementos.log";
   
+    /**
+     * Arreglo de elementos quimicos
+     */
 	private ArrayList<Elemento> elementos;
-	
-	public String getArchivoElementos() {
-		return archivoElementos;
-	}
 
-	public void setArchivoElementos(String archivoElementos) {
-		this.archivoElementos = archivoElementos;
-	}
-
-	public void setElementos(ArrayList<Elemento> elementos) {
-		this.elementos = elementos;
-	}
-
+	/**
+	 * Referencia al archivo de elementos
+	 */
 	private String archivoElementos;
-	
+
+    // -----------------------------------------------------------------
+    // Constructores
+    // -----------------------------------------------------------------
 	
 	/**
-	 * Constructor
+	 * Inicializacion de los atributos de la tabla periodica
+	 * @param nombreArchivoElemento 
+	 * @throws PersistenciaException error que puede presentar al abrir el archivo
 	 */
 	public TablaP(String nombreArchivoElemento) throws PersistenciaException
 	{
@@ -61,26 +63,14 @@ public class TablaP
 		
 	}	
 
+	/**
+	 * Metodo que representa el arreglo de los elementos
+	 * @return Arreglo de elementos quimicos
+	 */
 	public ArrayList<Elemento> getElementos() {
 		return elementos;
 	}
 
-	public Elemento consultar(int numAtomico) 
-	{
-		Elemento buscado = null;
-		for(int i =0; i< elementos.size(); i++)
-		{
-			Elemento e = elementos.get(i);
-			
-			if(e.getNumAtomico() == numAtomico)
-			{
-				buscado = e;
-			}
-		
-		}
-		return buscado;
-	}
-	
 	public Elemento verificarElemento(String numAtom)
 	{
 		Elemento elementoBuscado = null;
@@ -114,28 +104,23 @@ public class TablaP
 		guardar();
 	}
 	
-	
-	public void guardar() throws PersistenciaException
+	public Elemento consultar(int numAtomico) throws ElementoNoExisteException, NullPointerException
 	{
-		try 
+		Elemento buscado = null;
+		for(int i =0; i< elementos.size(); i++)
 		{
-			FileWriter file = new FileWriter(RUTA,false);
-			PrintWriter writer = new PrintWriter(file);
-			for(int i = 0; i < elementos.size(); i++)
+			Elemento e = elementos.get(i);
+			
+			if(e.getNumAtomico() == numAtomico)
 			{
-				Elemento e = elementos.get(i);
-				String out = e.getNumAtomico() +	 "-"	+	e.getSimbolo() +	"-"	+	e.getNombre() +	"-"	+	e.getCategoria();
-				writer.println(out);
+				buscado = e;
 			}
-			writer.close();
-			file.close();
+		
 		}
-		catch (IOException e)
-		{
-			throw new PersistenciaException("Existe un problema en el archivo");
-		}
+		return buscado;
+		
 	}
-
+	
 	public void eliminar(String numAtom) throws ElementoNoExisteException
 	{	
 		if(verificarElemento(numAtom)== null)
@@ -178,6 +163,30 @@ public class TablaP
 		}
 		
 	}
+	
+	
+	public void guardar() throws PersistenciaException
+	{
+		try 
+		{
+			FileWriter file = new FileWriter(RUTA,false);
+			PrintWriter writer = new PrintWriter(file);
+			for(int i = 0; i < elementos.size(); i++)
+			{
+				Elemento e = elementos.get(i);
+				String out = e.getNumAtomico() +	 "-"	+	e.getSimbolo() +	"-"	+	e.getNombre() +	"-"	+	e.getCategoria();
+				writer.println(out);
+			}
+			writer.close();
+			file.close();
+		}
+		catch (IOException e)
+		{
+			throw new PersistenciaException("Existe un problema en el archivo");
+		}
+	}
+
+
 	
 	public void cargarElementos() throws IOException
 	{

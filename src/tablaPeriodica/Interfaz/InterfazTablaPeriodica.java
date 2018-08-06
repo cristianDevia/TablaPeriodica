@@ -141,13 +141,19 @@ public class InterfazTablaPeriodica extends JFrame
 
     }
     
-    public void consultar()
+    public void consultar() 
     {
     	String numero = JOptionPane.showInputDialog("¿Digita el numero atomico del elemento que desea consultar? ");
     	
    		Elemento elemento;
-		elemento = tabla.consultar(Integer.parseInt(numero));
-		JOptionPane.showMessageDialog(this, elemento.getNumAtomico() + ", " + elemento.getNombre() + ", " + elemento.getSimbolo() + ", " + elemento.getCategoria());
+		try {
+			elemento = tabla.consultar(Integer.parseInt(numero));
+			JOptionPane.showMessageDialog(this, "Numero Atomico: "+ elemento.getNumAtomico() + "\n" + "Nombre: " + elemento.getNombre() + "\n" + "Simbolo: " + elemento.getSimbolo() + "\n" + "Categoria: " + elemento.getCategoria());
+
+		} catch (NumberFormatException | ElementoNoExisteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
     }
 
