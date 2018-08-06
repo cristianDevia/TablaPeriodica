@@ -124,6 +124,7 @@ public class PanelBotones extends JPanel implements ActionListener
 	{
         String comando = evento.getActionCommand( );
         
+        
         if(comando.equals(AGREGAR_ELEMENTO))
         {
         	principal.mostrarDialogoAgregarElemento();
@@ -132,6 +133,10 @@ public class PanelBotones extends JPanel implements ActionListener
 		if(comando.equals(ELIMINAR_ELEMENTO))
 		{
 			principal.mostrarDialogoEliminarElemento();
+		}
+		if(comando.equals(CONSULTAR_ELEMENTO))
+		{
+			principal.consultar();
 		}
 		
 	}

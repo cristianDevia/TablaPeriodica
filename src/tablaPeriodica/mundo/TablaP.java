@@ -65,7 +65,7 @@ public class TablaP
 		return elementos;
 	}
 
-	public Elemento consultar(int numAtomico)
+	public Elemento consultar(int numAtomico) 
 	{
 		Elemento buscado = null;
 		for(int i =0; i< elementos.size(); i++)
@@ -76,6 +76,7 @@ public class TablaP
 			{
 				buscado = e;
 			}
+		
 		}
 		return buscado;
 	}

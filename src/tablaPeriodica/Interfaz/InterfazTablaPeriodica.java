@@ -12,6 +12,7 @@ import javax.swing.JTextArea;
 
 import tablaPeriodica.mundo.Elemento;
 import tablaPeriodica.mundo.ElementoExisteException;
+import tablaPeriodica.mundo.ElementoNoExisteException;
 import tablaPeriodica.mundo.PersistenciaException;
 import tablaPeriodica.mundo.TablaP;
 
@@ -128,6 +129,9 @@ public class InterfazTablaPeriodica extends JFrame
         boolean ok = false;
 		try {
 			tabla.agregar(numAtom, simbolo, nombre, categoria);
+            JOptionPane.showMessageDialog(this, "El elemento se ha agregado satisfactoriamente");
+
+			
 			ok = true;
 		} catch (ElementoExisteException e) 
 		{
@@ -137,6 +141,15 @@ public class InterfazTablaPeriodica extends JFrame
 
     }
     
+    public void consultar()
+    {
+    	String numero = JOptionPane.showInputDialog("¿Digita el numero atomico del elemento que desea consultar? ");
+    	
+   		Elemento elemento;
+		elemento = tabla.consultar(Integer.parseInt(numero));
+		JOptionPane.showMessageDialog(this, elemento.getNumAtomico() + ", " + elemento.getNombre() + ", " + elemento.getSimbolo() + ", " + elemento.getCategoria());
+
+    }
 
     
     public void visualizar()
