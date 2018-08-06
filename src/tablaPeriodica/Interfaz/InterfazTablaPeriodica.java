@@ -141,14 +141,14 @@ public class InterfazTablaPeriodica extends JFrame
     	
    		Elemento elemento;
 		try {
-			elemento = tabla.consultar(Integer.parseInt(numero));
+			elemento = tabla.consultar(numero);
 			if(elemento == null )
 			{
 				JOptionPane.showMessageDialog(this, "La operacion Consultar ha sido cancelada");
 			}
 			JOptionPane.showMessageDialog(this, "Numero Atomico: "+ elemento.getNumAtomico() + "\n" + "Nombre: " + elemento.getNombre() + "\n" + "Simbolo: " + elemento.getSimbolo() + "\n" + "Categoria: " + elemento.getCategoria());
 
-		} catch (NumberFormatException | ElementoNoExisteException e) {
+		} catch (NumberFormatException  e) {
 			e.printStackTrace();
 		}
 
@@ -167,6 +167,24 @@ public class InterfazTablaPeriodica extends JFrame
 				e.printStackTrace();
 			}
     	
+    }
+    
+    public void modificar()
+    {
+    	
+    	String numero = JOptionPane.showInputDialog("Digite el numero atomico del elemento que desea modificar ");
+
+    	String nombre = JOptionPane.showInputDialog("Digite el nombre del elemento con numero atomico: " + numero);
+
+    	String simbolo = JOptionPane.showInputDialog("Digite el simbolo del elemento con numero atomico : " + numero);
+    	
+    	try {
+			tabla.modificar(numero, simbolo, nombre);
+			JOptionPane.showMessageDialog(this, "El elemento ha sido modificado satisfactoriamente");
+		} catch (ElementoNoExisteException | PersistenciaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	
     }
 

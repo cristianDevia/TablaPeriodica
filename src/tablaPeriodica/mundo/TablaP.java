@@ -71,7 +71,7 @@ public class TablaP
 		return elementos;
 	}
 
-	public Elemento verificarElemento(String numAtom)
+	public Elemento consultar(String numAtom)
 	{
 		Elemento elementoBuscado = null;
 		boolean esta = false;
@@ -94,7 +94,7 @@ public class TablaP
 	public void agregar(int numAtom, String simbol, String nombre, String categoria) throws ElementoExisteException, PersistenciaException
 	{
 		String n = Integer.toString(numAtom);
-		if(verificarElemento(n)!= null)
+		if(consultar(n)!= null)
 		{
 			throw new ElementoExisteException("El elemento con numero atomico" + numAtom + " ya existe");
 		}
@@ -104,26 +104,11 @@ public class TablaP
 		guardar();
 	}
 	
-	public Elemento consultar(int numAtomico) throws ElementoNoExisteException, NullPointerException
-	{
-		Elemento buscado = null;
-		for(int i =0; i< elementos.size(); i++)
-		{
-			Elemento e = elementos.get(i);
-			
-			if(e.getNumAtomico() == numAtomico)
-			{
-				buscado = e;
-			}
-		
-		}
-		return buscado;
-		
-	}
+	
 	
 	public void eliminar(String numAtom) throws ElementoNoExisteException, PersistenciaException
 	{	
-		if(verificarElemento(numAtom)== null)
+		if(consultar(numAtom)== null)
 		{
 			throw new ElementoNoExisteException("El elemento con numero atomico " + numAtom + " no existe");
 		}
@@ -143,9 +128,9 @@ public class TablaP
 		}	
 	}
 	
-	public void modificar(String numAtom, String simbolo, String nombre) throws ElementoNoExisteException
+	public void modificar(String numAtom, String simbolo, String nombre) throws ElementoNoExisteException, PersistenciaException
 	{
-		if(verificarElemento(numAtom)== null)
+		if(consultar(numAtom)== null)
 		{
 			throw new ElementoNoExisteException("El elemento con numero atomico " + numAtom + " no existe");
 		}
@@ -160,6 +145,7 @@ public class TablaP
 			{
 				elemento.setSimbolo(simbolo);
 				elemento.setNombre(nombre);
+				guardar();
 			}
 		}
 		

@@ -138,6 +138,10 @@ public class PanelBotones extends JPanel implements ActionListener
 		{
 			principal.consultar();
 		}
+		if(comando.equals(MODIFICAR_ELEMENTO))
+		{
+			principal.modificar();
+		}
 		
 	}
 
