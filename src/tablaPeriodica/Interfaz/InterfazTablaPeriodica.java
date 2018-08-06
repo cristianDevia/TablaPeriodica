@@ -141,7 +141,7 @@ public class InterfazTablaPeriodica extends JFrame
     
     public void visualizar()
     {
-  	
+    	
     	for(int i =0; i < tabla.getElementos().size(); i++)
     	{
     		Elemento aux = tabla.getElementos().get(i);
