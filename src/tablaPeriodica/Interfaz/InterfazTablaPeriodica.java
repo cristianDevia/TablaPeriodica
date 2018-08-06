@@ -169,11 +169,19 @@ public class InterfazTablaPeriodica extends JFrame
     	
     }
     
-    public void modificar()
+    public void modificar() 
     {
     	
     	String numero = JOptionPane.showInputDialog("Digite el numero atomico del elemento que desea modificar ");
-
+    	if(tabla.consultar(numero)== null)
+		{
+			try {
+				throw new ElementoNoExisteException("El elemento con numero atomico " + numero + " no existe");
+			} catch (ElementoNoExisteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}    	
     	String nombre = JOptionPane.showInputDialog("Digite el nombre del elemento con numero atomico: " + numero);
 
     	String simbolo = JOptionPane.showInputDialog("Digite el simbolo del elemento con numero atomico : " + numero);
